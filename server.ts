@@ -86,7 +86,7 @@ app.get("/api/auth/status", (req, res) => {
 
 // RSVP Route
 app.post("/api/rsvp", async (req, res) => {
-  const { name, attending, guests, message, diet } = req.body;
+  const { name, attending, guests, otherGuests, childrenCount, needsAccommodation, diet, message } = req.body;
   const tokens = getStoredTokens();
 
   if (!tokens) {
@@ -122,7 +122,7 @@ app.post("/api/rsvp", async (req, res) => {
            range: "Sheet1!A1",
            valueInputOption: "RAW",
            requestBody: {
-             values: [["Timestamp", "Name", "Attending", "Guest Count", "Dietary Requirements", "Message"]]
+             values: [["Timestamp", "Name", "Attending", "Adults", "Children", "Other Guests", "Needs Accommodation", "Dietary Requirements", "Message"]]
            }
          });
        }
@@ -133,7 +133,17 @@ app.post("/api/rsvp", async (req, res) => {
       range: "Sheet1!A1",
       valueInputOption: "RAW",
       requestBody: {
-        values: [[new Date().toLocaleString(), name, attending ? "Yes" : "No", guests, diet, message]]
+        values: [[
+          new Date().toLocaleString(), 
+          name, 
+          attending ? "Yes" : "No", 
+          guests, 
+          childrenCount,
+          otherGuests,
+          needsAccommodation ? "Yes" : "No",
+          diet, 
+          message
+        ]]
       }
     });
 

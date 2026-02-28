@@ -356,90 +356,99 @@ export default function App() {
                   />
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div className="space-y-4">
-                    <label className="text-autumn-accent text-sm uppercase tracking-widest block">Veți fi alături de noi?</label>
-                    <div className="flex gap-4">
-                      <button
-                        type="button"
-                        onClick={() => setIsAttending(true)}
-                        className={cn(
-                          "flex-1 py-3 rounded-lg border transition-all",
-                          isAttending === true ? "bg-autumn-accent text-autumn-deep border-autumn-accent" : "border-white/10 hover:border-autumn-accent/30"
-                        )}
-                      >
-                        Da, cu mare drag
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setIsAttending(false)}
-                        className={cn(
-                          "flex-1 py-3 rounded-lg border transition-all",
-                          isAttending === false ? "bg-autumn-accent text-autumn-deep border-autumn-accent" : "border-white/10 hover:border-autumn-accent/30"
-                        )}
-                      >
-                        Din păcate, nu
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label className="text-autumn-accent text-sm uppercase tracking-widest block">Adulți</label>
-                      <input 
-                        name="guests"
-                        type="number" 
-                        min="1"
-                        max="10"
-                        defaultValue="1"
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-autumn-accent/50 transition-colors"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-autumn-accent text-sm uppercase tracking-widest block">Copii</label>
-                      <input 
-                        name="childrenCount"
-                        type="number" 
-                        min="0"
-                        max="10"
-                        defaultValue="0"
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-autumn-accent/50 transition-colors"
-                      />
-                    </div>
+                <div className="space-y-4">
+                  <label className="text-autumn-accent text-sm uppercase tracking-widest block">Veți fi alături de noi?</label>
+                  <div className="flex gap-4">
+                    <button
+                      type="button"
+                      onClick={() => setIsAttending(true)}
+                      className={cn(
+                        "flex-1 py-3 rounded-lg border transition-all",
+                        isAttending === true ? "bg-autumn-accent text-autumn-deep border-autumn-accent" : "border-white/10 hover:border-autumn-accent/30"
+                      )}
+                    >
+                      Da, cu mare drag
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setIsAttending(false)}
+                      className={cn(
+                        "flex-1 py-3 rounded-lg border transition-all",
+                        isAttending === false ? "bg-autumn-accent text-autumn-deep border-autumn-accent" : "border-white/10 hover:border-autumn-accent/30"
+                      )}
+                    >
+                      Din păcate, nu
+                    </button>
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-autumn-accent text-sm uppercase tracking-widest block">Numele persoanelor însoțitoare</label>
-                  <input 
-                    name="otherGuests"
-                    type="text" 
-                    placeholder="ex: Numele soțului/soției, copiilor"
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-autumn-accent/50 transition-colors"
-                  />
-                </div>
+                <AnimatePresence>
+                  {isAttending === true && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="space-y-8 overflow-hidden"
+                    >
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <label className="text-autumn-accent text-sm uppercase tracking-widest block">Adulți</label>
+                          <input 
+                            name="guests"
+                            type="number" 
+                            min="1"
+                            max="10"
+                            defaultValue="1"
+                            className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-autumn-accent/50 transition-colors"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <label className="text-autumn-accent text-sm uppercase tracking-widest block">Copii</label>
+                          <input 
+                            name="childrenCount"
+                            type="number" 
+                            min="0"
+                            max="10"
+                            defaultValue="0"
+                            className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-autumn-accent/50 transition-colors"
+                          />
+                        </div>
+                      </div>
 
-                <div className="flex items-center gap-3 py-2">
-                  <input 
-                    id="needsAccommodation"
-                    name="needsAccommodation"
-                    type="checkbox" 
-                    className="w-5 h-5 accent-autumn-accent bg-white/5 border-white/10 rounded"
-                  />
-                  <label htmlFor="needsAccommodation" className="text-parchment/80 text-sm cursor-pointer select-none">
-                    Aveți nevoie de cazare? (cameră de hotel)
-                  </label>
-                </div>
+                      <div className="space-y-2">
+                        <label className="text-autumn-accent text-sm uppercase tracking-widest block">Numele persoanelor însoțitoare</label>
+                        <input 
+                          name="otherGuests"
+                          type="text" 
+                          placeholder="ex: Numele soțului/soției, copiilor"
+                          className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-autumn-accent/50 transition-colors"
+                        />
+                      </div>
 
-                <div className="space-y-2">
-                  <label className="text-autumn-accent text-sm uppercase tracking-widest block">Preferințe Culinare / Alergii</label>
-                  <input 
-                    name="diet"
-                    type="text" 
-                    placeholder="ex: Vegetarian, Alergii"
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-autumn-accent/50 transition-colors"
-                  />
-                </div>
+                      <div className="flex items-center gap-3 py-2">
+                        <input 
+                          id="needsAccommodation"
+                          name="needsAccommodation"
+                          type="checkbox" 
+                          className="w-5 h-5 accent-autumn-accent bg-white/5 border-white/10 rounded"
+                        />
+                        <label htmlFor="needsAccommodation" className="text-parchment/80 text-sm cursor-pointer select-none">
+                          Aveți nevoie de cazare? (cameră de hotel)
+                        </label>
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="text-autumn-accent text-sm uppercase tracking-widest block">Preferințe Culinare / Alergii</label>
+                        <input 
+                          name="diet"
+                          type="text" 
+                          placeholder="ex: Vegetarian, Alergii"
+                          className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-autumn-accent/50 transition-colors"
+                        />
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
                 <div className="space-y-2">
                   <label className="text-autumn-accent text-sm uppercase tracking-widest block">Mesaj pentru miri</label>
