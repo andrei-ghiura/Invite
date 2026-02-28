@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cinzel", serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Inter", sans-serif;
+  
+  --color-gold: #d4af37;
+  --color-gold-light: #f9e498;
+  --color-emerald-deep: #062c21;
+  --color-parchment: #f5f2ed;
+}
+
+@layer base {
+  body {
+    @apply bg-emerald-deep text-parchment font-serif antialiased;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-display tracking-widest uppercase;
+  }
+}
+
+.fantasy-gradient {
+  background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+}
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+}
+
+.gold-text {
+  @apply text-gold bg-clip-text;
+  background-image: linear-gradient(to bottom right, #d4af37, #f9e498, #d4af37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.divider-gold {
+  @apply h-px w-full max-w-xs mx-auto my-8;
+  background: linear-gradient(to right, transparent, #d4af37, transparent);
+}
