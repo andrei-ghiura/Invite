@@ -62,7 +62,7 @@ const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
           <div className="glass-card w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mb-2">
             <span className="text-2xl md:text-3xl gold-text font-display">{unit.value.toString().padStart(2, '0')}</span>
           </div>
-          <span className="text-[10px] md:text-xs uppercase tracking-widest text-gold/60">{unit.label}</span>
+          <span className="text-[10px] md:text-xs uppercase tracking-widest text-autumn-accent/60">{unit.label}</span>
         </div>
       ))}
     </div>
@@ -80,7 +80,7 @@ const FloatingParticles = () => (
     {[...Array(20)].map((_, i) => (
       <motion.div
         key={i}
-        className="absolute w-1 h-1 bg-gold/30 rounded-full"
+        className="absolute w-1 h-1 bg-autumn-accent/40 rounded-full"
         initial={{ 
           x: Math.random() * 100 + "%", 
           y: Math.random() * 100 + "%",
@@ -162,17 +162,17 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen selection:bg-gold/30 relative bg-emerald-deep">
+    <div className="min-h-screen selection:bg-autumn-accent/30 relative bg-autumn-deep">
       {/* Global Background */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=2000" 
-            className="w-full h-full object-cover opacity-25 mix-blend-luminosity"
-            alt="Fundal Nuntă"
+            src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&q=80&w=2000" 
+            className="w-full h-full object-cover opacity-30 mix-blend-luminosity"
+            alt="Fundal Toamnă"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-emerald-deep/30 via-emerald-deep/50 to-emerald-deep/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-autumn-deep/40 via-autumn-deep/60 to-autumn-deep/90" />
         </div>
       </div>
 
@@ -186,7 +186,7 @@ export default function App() {
           transition={{ duration: 1.5 }}
           className="relative z-10"
         >
-          <span className="text-gold tracking-[0.5em] text-sm mb-6 block uppercase font-display">
+          <span className="text-autumn-accent tracking-[0.5em] text-sm mb-6 block uppercase font-display">
             SAVE THE DATE
           </span>
           <h1 className="text-6xl md:text-8xl mb-4 gold-text">
@@ -196,12 +196,12 @@ export default function App() {
           <p className="text-xl md:text-2xl font-serif italic text-parchment/90 mb-8 max-w-2xl mx-auto leading-relaxed">
             Vă invităm cu bucurie să fiți alături de noi într-o zi plină de emoție, iubire și speranță.
           </p>
-          <div className="flex items-center justify-center gap-8 text-gold/80 font-sans text-sm tracking-widest uppercase">
+          <div className="flex items-center justify-center gap-8 text-autumn-accent/80 font-sans text-sm tracking-widest uppercase">
             <div className="flex flex-col items-center">
               <Calendar className="w-5 h-5 mb-2" />
               <span>Duminică, 27 Septembrie 2026</span>
             </div>
-            <div className="w-px h-12 bg-gold/30" />
+            <div className="w-px h-12 bg-autumn-accent/30" />
             <div className="flex flex-col items-center">
               <MapPin className="w-5 h-5 mb-2" />
               <span>Alba Iulia</span>
@@ -210,7 +210,7 @@ export default function App() {
         </motion.div>
 
         <motion.div 
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-gold/50"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-autumn-accent/50"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
@@ -219,7 +219,7 @@ export default function App() {
       </Section>
 
       {/* Invitation Text Section */}
-      <Section className="bg-emerald-deep/20 py-32">
+      <Section className="bg-autumn-deep/20 py-32">
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div
             initial={{ opacity: 0 }}
@@ -229,14 +229,14 @@ export default function App() {
           >
             <div className="grid md:grid-cols-2 gap-16">
               <div className="space-y-6">
-                <h3 className="text-gold text-sm uppercase tracking-widest">Cu binecuvântarea părinților:</h3>
+                <h3 className="text-autumn-accent text-sm uppercase tracking-widest">Cu binecuvântarea părinților:</h3>
                 <div className="space-y-2">
                   <p className="text-2xl italic">Alin & Maria Ghiura</p>
                   <p className="text-2xl italic">Sorin & Delia Mureșan</p>
                 </div>
               </div>
               <div className="space-y-6">
-                <h3 className="text-gold text-sm uppercase tracking-widest">Sub ocrotirea nașilor:</h3>
+                <h3 className="text-autumn-accent text-sm uppercase tracking-widest">Sub ocrotirea nașilor:</h3>
                 <div className="space-y-2">
                   <p className="text-2xl italic">Sergiu & Ștefania Muntean</p>
                 </div>
@@ -247,7 +247,7 @@ export default function App() {
       </Section>
 
       {/* Countdown Section */}
-      <Section className="bg-emerald-deep/10">
+      <Section className="bg-autumn-deep/10">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-2xl mb-12 gold-text">Au mai rămas....</h2>
           <CountdownTimer targetDate="2026-09-27T12:00:00" />
@@ -268,8 +268,8 @@ export default function App() {
               viewport={{ once: true }}
               className="glass-card p-12 flex flex-col items-center text-center"
             >
-              <div className="w-16 h-16 rounded-full border border-gold/30 flex items-center justify-center mb-6">
-                <Clock className="w-8 h-8 text-gold" />
+              <div className="w-16 h-16 rounded-full border border-autumn-accent/30 flex items-center justify-center mb-6">
+                <Clock className="w-8 h-8 text-autumn-accent" />
               </div>
               <h3 className="text-2xl mb-4 gold-text">CUNUNIA RELIGIOASĂ</h3>
               <p className="text-xl mb-2">ora 12:00</p>
@@ -278,7 +278,7 @@ export default function App() {
                 href="https://maps.google.com/?q=Biserica+Ortodoxa+Oarda+de+Jos" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gold border border-gold/30 px-6 py-2 rounded-full hover:bg-gold/10 transition-all uppercase tracking-widest text-xs"
+                className="text-autumn-accent border border-autumn-accent/30 px-6 py-2 rounded-full hover:bg-autumn-accent/10 transition-all uppercase tracking-widest text-xs"
               >
                 Vezi locația
               </a>
@@ -290,8 +290,8 @@ export default function App() {
               viewport={{ once: true }}
               className="glass-card p-12 flex flex-col items-center text-center"
             >
-              <div className="w-16 h-16 rounded-full border border-gold/30 flex items-center justify-center mb-6">
-                <Sparkles className="w-8 h-8 text-gold" />
+              <div className="w-16 h-16 rounded-full border border-autumn-accent/30 flex items-center justify-center mb-6">
+                <Sparkles className="w-8 h-8 text-autumn-accent" />
               </div>
               <h3 className="text-2xl mb-4 gold-text">PETRECEREA</h3>
               <p className="text-xl mb-2">ora 14:00</p>
@@ -300,7 +300,7 @@ export default function App() {
                 href="https://maps.google.com/?q=Mariss+Events+Alba+Iulia" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gold border border-gold/30 px-6 py-2 rounded-full hover:bg-gold/10 transition-all uppercase tracking-widest text-xs"
+                className="text-autumn-accent border border-autumn-accent/30 px-6 py-2 rounded-full hover:bg-autumn-accent/10 transition-all uppercase tracking-widest text-xs"
               >
                 Vezi locația
               </a>
@@ -310,10 +310,10 @@ export default function App() {
       </Section>
 
       {/* RSVP Section */}
-      <Section id="rsvp" className="bg-emerald-deep/10">
+      <Section id="rsvp" className="bg-autumn-deep/10">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16">
-            <Heart className="w-10 h-10 text-gold mx-auto mb-6" />
+            <Heart className="w-10 h-10 text-autumn-accent mx-auto mb-6" />
             <h2 className="text-4xl mb-4 gold-text">Confirmare</h2>
             <p className="text-parchment/60 uppercase tracking-widest text-sm">Vă rugăm să ne confirmați prezența dvs până la data de 10 August 2026</p>
           </div>
@@ -326,12 +326,12 @@ export default function App() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="glass-card p-12 text-center space-y-6"
               >
-                <CheckCircle2 className="w-16 h-16 text-gold mx-auto" />
+                <CheckCircle2 className="w-16 h-16 text-autumn-accent mx-auto" />
                 <h3 className="text-2xl">Vă mulțumim!</h3>
                 <p className="text-parchment/70">Răspunsul dumneavoastră a fost înregistrat. Abia așteptăm să ne vedem!</p>
                 <button 
                   onClick={() => setFormStatus('idle')}
-                  className="text-gold hover:text-gold-light transition-colors uppercase tracking-widest text-sm"
+                  className="text-autumn-accent hover:text-autumn-accent/80 transition-colors uppercase tracking-widest text-sm"
                 >
                   Trimite alt răspuns
                 </button>
@@ -346,26 +346,26 @@ export default function App() {
                 className="space-y-8 glass-card p-8 md:p-12"
               >
                 <div className="space-y-2">
-                  <label className="text-gold text-sm uppercase tracking-widest block">Nume Complet</label>
+                  <label className="text-autumn-accent text-sm uppercase tracking-widest block">Nume Complet</label>
                   <input 
                     required
                     name="name"
                     type="text" 
                     placeholder="Introduceți numele dumneavoastră"
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-gold/50 transition-colors"
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-autumn-accent/50 transition-colors"
                   />
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-8">
                   <div className="space-y-4">
-                    <label className="text-gold text-sm uppercase tracking-widest block">Veți fi alături de noi?</label>
+                    <label className="text-autumn-accent text-sm uppercase tracking-widest block">Veți fi alături de noi?</label>
                     <div className="flex gap-4">
                       <button
                         type="button"
                         onClick={() => setIsAttending(true)}
                         className={cn(
                           "flex-1 py-3 rounded-lg border transition-all",
-                          isAttending === true ? "bg-gold text-emerald-deep border-gold" : "border-white/10 hover:border-gold/30"
+                          isAttending === true ? "bg-autumn-accent text-autumn-deep border-autumn-accent" : "border-white/10 hover:border-autumn-accent/30"
                         )}
                       >
                         Da, cu mare drag
@@ -375,7 +375,7 @@ export default function App() {
                         onClick={() => setIsAttending(false)}
                         className={cn(
                           "flex-1 py-3 rounded-lg border transition-all",
-                          isAttending === false ? "bg-gold text-emerald-deep border-gold" : "border-white/10 hover:border-gold/30"
+                          isAttending === false ? "bg-autumn-accent text-autumn-deep border-autumn-accent" : "border-white/10 hover:border-autumn-accent/30"
                         )}
                       >
                         Din păcate, nu
@@ -385,37 +385,37 @@ export default function App() {
 
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label className="text-gold text-sm uppercase tracking-widest block">Adulți</label>
+                      <label className="text-autumn-accent text-sm uppercase tracking-widest block">Adulți</label>
                       <input 
                         name="guests"
                         type="number" 
                         min="1"
                         max="10"
                         defaultValue="1"
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-gold/50 transition-colors"
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-autumn-accent/50 transition-colors"
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-gold text-sm uppercase tracking-widest block">Copii</label>
+                      <label className="text-autumn-accent text-sm uppercase tracking-widest block">Copii</label>
                       <input 
                         name="childrenCount"
                         type="number" 
                         min="0"
                         max="10"
                         defaultValue="0"
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-gold/50 transition-colors"
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-autumn-accent/50 transition-colors"
                       />
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-gold text-sm uppercase tracking-widest block">Numele persoanelor însoțitoare</label>
+                  <label className="text-autumn-accent text-sm uppercase tracking-widest block">Numele persoanelor însoțitoare</label>
                   <input 
                     name="otherGuests"
                     type="text" 
                     placeholder="ex: Numele soțului/soției, copiilor"
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-gold/50 transition-colors"
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-autumn-accent/50 transition-colors"
                   />
                 </div>
 
@@ -424,7 +424,7 @@ export default function App() {
                     id="needsAccommodation"
                     name="needsAccommodation"
                     type="checkbox" 
-                    className="w-5 h-5 accent-gold bg-white/5 border-white/10 rounded"
+                    className="w-5 h-5 accent-autumn-accent bg-white/5 border-white/10 rounded"
                   />
                   <label htmlFor="needsAccommodation" className="text-parchment/80 text-sm cursor-pointer select-none">
                     Aveți nevoie de cazare? (cameră de hotel)
@@ -432,29 +432,29 @@ export default function App() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-gold text-sm uppercase tracking-widest block">Preferințe Culinare / Alergii</label>
+                  <label className="text-autumn-accent text-sm uppercase tracking-widest block">Preferințe Culinare / Alergii</label>
                   <input 
                     name="diet"
                     type="text" 
                     placeholder="ex: Vegetarian, Alergii"
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-gold/50 transition-colors"
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-autumn-accent/50 transition-colors"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-gold text-sm uppercase tracking-widest block">Mesaj pentru miri</label>
+                  <label className="text-autumn-accent text-sm uppercase tracking-widest block">Mesaj pentru miri</label>
                   <textarea 
                     name="message"
                     rows={4}
                     placeholder="Lăsați un gând bun pentru Maria & Andrei..."
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-gold/50 transition-colors resize-none"
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-autumn-accent/50 transition-colors resize-none"
                   />
                 </div>
 
                 <button 
                   disabled={isAttending === null || formStatus === 'submitting'}
                   type="submit"
-                  className="w-full bg-gold hover:bg-gold-light disabled:opacity-50 disabled:cursor-not-allowed text-emerald-deep font-display py-4 rounded-lg transition-all uppercase tracking-widest flex items-center justify-center gap-2"
+                  className="w-full bg-autumn-accent hover:bg-autumn-accent/90 disabled:opacity-50 disabled:cursor-not-allowed text-autumn-deep font-display py-4 rounded-lg transition-all uppercase tracking-widest flex items-center justify-center gap-2"
                 >
                   {formStatus === 'submitting' ? (
                     <Loader2 className="w-5 h-5 animate-spin" />
@@ -481,7 +481,7 @@ export default function App() {
         <div className="flex items-center justify-center gap-4">
           <button 
             onClick={() => setShowAdmin(!showAdmin)}
-            className="text-parchment/20 hover:text-gold transition-colors flex items-center gap-2 text-xs uppercase tracking-widest"
+            className="text-parchment/20 hover:text-autumn-accent transition-colors flex items-center gap-2 text-xs uppercase tracking-widest"
           >
             <Settings className="w-3 h-3" /> Configurare Admin
           </button>
@@ -496,7 +496,7 @@ export default function App() {
               className="mt-8 overflow-hidden"
             >
               <div className="glass-card p-6 inline-block text-left max-w-md">
-                <h4 className="text-gold mb-4 flex items-center gap-2">
+                <h4 className="text-autumn-accent mb-4 flex items-center gap-2">
                   <Info className="w-4 h-4" /> Integrare Google Sheets
                 </h4>
                 <p className="mb-6 text-xs normal-case tracking-normal text-parchment/60">
@@ -507,7 +507,7 @@ export default function App() {
                   onClick={handleConnectGoogle}
                   className={cn(
                     "w-full py-2 rounded border transition-all flex items-center justify-center gap-2 text-xs uppercase tracking-widest",
-                    adminStatus.connected ? "border-green-500/50 text-green-400" : "border-gold/30 text-gold hover:bg-gold/10"
+                    adminStatus.connected ? "border-green-500/50 text-green-400" : "border-autumn-accent/30 text-autumn-accent hover:bg-autumn-accent/10"
                   )}
                 >
                   {adminStatus.connected ? (

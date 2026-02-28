@@ -8,13 +8,15 @@
   
   --color-gold: #d4af37;
   --color-gold-light: #f9e498;
-  --color-emerald-deep: #062c21;
-  --color-parchment: #f5f2ed;
+  --color-autumn-deep: #2c0e06; /* Deep Burgundy/Dark Brown */
+  --color-autumn-warm: #8b3d1b; /* Burnt Orange */
+  --color-autumn-accent: #d97706; /* Amber */
+  --color-parchment: #fdfaf6;
 }
 
 @layer base {
   body {
-    @apply text-parchment font-serif antialiased;
+    @apply text-parchment font-serif antialiased bg-autumn-deep;
   }
   
   h1, h2, h3, h4 {
@@ -23,7 +25,7 @@
 }
 
 .fantasy-gradient {
-  background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle at 50% 50%, rgba(217, 119, 6, 0.15) 0%, transparent 70%);
 }
 
 .glass-card {
@@ -31,13 +33,13 @@
 }
 
 .gold-text {
-  @apply text-gold bg-clip-text;
-  background-image: linear-gradient(to bottom right, #d4af37, #f9e498, #d4af37);
+  @apply text-autumn-accent bg-clip-text;
+  background-image: linear-gradient(to bottom right, #d97706, #fbbf24, #d97706);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .divider-gold {
   @apply h-px w-full max-w-xs mx-auto my-8;
-  background: linear-gradient(to right, transparent, #d4af37, transparent);
+  background: linear-gradient(to right, transparent, #d97706, transparent);
 }
