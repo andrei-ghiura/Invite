@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Heart, 
   MapPin, 
@@ -109,11 +109,6 @@ export default function App() {
   const [adminStatus, setAdminStatus] = useState<{ connected: boolean }>({ connected: false });
   const [showAdmin, setShowAdmin] = useState(false);
 
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
-  const y2 = useTransform(scrollY, [0, 1000], [0, -150]);
-  const opacity = useTransform(scrollY, [0, 500], [1, 0]);
-
   useEffect(() => {
     fetch('/api/auth/status')
       .then(res => res.json())
@@ -146,6 +141,9 @@ export default function App() {
       name: formData.get('name'),
       attending: isAttending,
       guests: formData.get('guests') || 0,
+      otherGuests: formData.get('otherGuests'),
+      childrenCount: formData.get('childrenCount') || 0,
+      needsAccommodation: formData.get('needsAccommodation') === 'on',
       diet: formData.get('diet'),
       message: formData.get('message'),
     };
@@ -164,26 +162,25 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen selection:bg-gold/30">
-      {/* Hero Section */}
-      <Section className="h-screen flex flex-col items-center justify-center text-center pt-0">
-        <motion.div 
-          style={{ y: y1 }}
-          className="absolute inset-0 z-0"
-        >
+    <div className="min-h-screen selection:bg-gold/30 relative bg-emerald-deep">
+      {/* Global Background */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0">
           <img 
             src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=2000" 
-            className="w-full h-full object-cover opacity-30 mix-blend-luminosity scale-110"
+            className="w-full h-full object-cover opacity-25 mix-blend-luminosity"
             alt="Fundal Nuntă"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-emerald-deep/50 via-emerald-deep/80 to-emerald-deep" />
-        </motion.div>
-        
+          <div className="absolute inset-0 bg-gradient-to-b from-emerald-deep/30 via-emerald-deep/50 to-emerald-deep/80" />
+        </div>
+      </div>
+
+      {/* Hero Section */}
+      <Section className="h-screen flex flex-col items-center justify-center text-center pt-0">
         <FloatingParticles />
 
         <motion.div
-          style={{ opacity }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5 }}
@@ -222,13 +219,7 @@ export default function App() {
       </Section>
 
       {/* Invitation Text Section */}
-      <Section className="bg-emerald-deep/50 py-32">
-        <motion.div 
-          style={{ y: y2 }}
-          className="absolute top-0 right-0 p-24 opacity-10 pointer-events-none"
-        >
-          <Sparkles className="w-64 h-64 text-gold" />
-        </motion.div>
+      <Section className="bg-emerald-deep/20 py-32">
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div
             initial={{ opacity: 0 }}
@@ -256,21 +247,15 @@ export default function App() {
       </Section>
 
       {/* Countdown Section */}
-      <Section className="bg-emerald-deep/30">
+      <Section className="bg-emerald-deep/10">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-2xl mb-12 gold-text">Au mai rămas....</h2>
-          <CountdownTimer targetDate="2026-09-27T16:00:00" />
+          <CountdownTimer targetDate="2026-09-27T12:00:00" />
         </div>
       </Section>
 
       {/* Program Section */}
       <Section id="details">
-        <motion.div 
-          style={{ y: y1 }}
-          className="absolute bottom-0 left-0 p-24 opacity-10 pointer-events-none"
-        >
-          <Heart className="w-64 h-64 text-gold" />
-        </motion.div>
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl gold-text">Programul Zilei</h2>
@@ -287,10 +272,10 @@ export default function App() {
                 <Clock className="w-8 h-8 text-gold" />
               </div>
               <h3 className="text-2xl mb-4 gold-text">CUNUNIA RELIGIOASĂ</h3>
-              <p className="text-xl mb-2">ora 16:00</p>
-              <p className="text-parchment/70 mb-8">Catedrala Reîntregirii, Alba Iulia</p>
+              <p className="text-xl mb-2">ora 12:00</p>
+              <p className="text-parchment/70 mb-8">Biserica Ortodoxă, Oarda de Jos</p>
               <a 
-                href="https://maps.google.com/?q=Catedrala+Reîntregirii+Alba+Iulia" 
+                href="https://maps.google.com/?q=Biserica+Ortodoxa+Oarda+de+Jos" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gold border border-gold/30 px-6 py-2 rounded-full hover:bg-gold/10 transition-all uppercase tracking-widest text-xs"
@@ -309,7 +294,7 @@ export default function App() {
                 <Sparkles className="w-8 h-8 text-gold" />
               </div>
               <h3 className="text-2xl mb-4 gold-text">PETRECEREA</h3>
-              <p className="text-xl mb-2">ora 19:00</p>
+              <p className="text-xl mb-2">ora 14:00</p>
               <p className="text-parchment/70 mb-8">Mariss Events, Alba Iulia</p>
               <a 
                 href="https://maps.google.com/?q=Mariss+Events+Alba+Iulia" 
@@ -325,7 +310,7 @@ export default function App() {
       </Section>
 
       {/* RSVP Section */}
-      <Section id="rsvp" className="bg-emerald-deep/30">
+      <Section id="rsvp" className="bg-emerald-deep/10">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16">
             <Heart className="w-10 h-10 text-gold mx-auto mb-6" />
@@ -398,17 +383,52 @@ export default function App() {
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="text-gold text-sm uppercase tracking-widest block">Număr de Persoane</label>
-                    <input 
-                      name="guests"
-                      type="number" 
-                      min="1"
-                      max="10"
-                      defaultValue="1"
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-gold/50 transition-colors"
-                    />
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <label className="text-gold text-sm uppercase tracking-widest block">Adulți</label>
+                      <input 
+                        name="guests"
+                        type="number" 
+                        min="1"
+                        max="10"
+                        defaultValue="1"
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-gold/50 transition-colors"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-gold text-sm uppercase tracking-widest block">Copii</label>
+                      <input 
+                        name="childrenCount"
+                        type="number" 
+                        min="0"
+                        max="10"
+                        defaultValue="0"
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-gold/50 transition-colors"
+                      />
+                    </div>
                   </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-gold text-sm uppercase tracking-widest block">Numele persoanelor însoțitoare</label>
+                  <input 
+                    name="otherGuests"
+                    type="text" 
+                    placeholder="ex: Numele soțului/soției, copiilor"
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-gold/50 transition-colors"
+                  />
+                </div>
+
+                <div className="flex items-center gap-3 py-2">
+                  <input 
+                    id="needsAccommodation"
+                    name="needsAccommodation"
+                    type="checkbox" 
+                    className="w-5 h-5 accent-gold bg-white/5 border-white/10 rounded"
+                  />
+                  <label htmlFor="needsAccommodation" className="text-parchment/80 text-sm cursor-pointer select-none">
+                    Aveți nevoie de cazare? (cameră de hotel)
+                  </label>
                 </div>
 
                 <div className="space-y-2">
